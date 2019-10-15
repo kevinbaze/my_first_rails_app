@@ -1,0 +1,149 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (43.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateCars (20190930074952)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "cars" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "make" varchar, "model" varchar, "year" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190930074952_create_cars.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190930074952"]]
+  ↳ bin/rails:9
+  [1m[35m (21.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-30 07:55:34.563890"], ["updated_at", "2019-09-30 07:55:34.563890"]]
+  ↳ bin/rails:9
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/cars" for 127.0.0.1 at 2019-09-30 09:58:39 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kevinbaze/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 2428ms (Views: 2410.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cars/new" for 127.0.0.1 at 2019-09-30 09:58:45 +0200
+Processing by CarsController#new as HTML
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (25.4ms)
+  Rendered cars/new.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 68ms (Views: 56.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2019-09-30 09:59:17 +0200
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ren5XTW5zUa4NMaymxQZ5SieYxk6C+98+HKbepscU4Q4PK5Ku/78G8W1LdlUF8/qWvMeSCwiKzdLtcI9lbnR2Q==", "car"=>{"make"=>"Kevinhonda", "model"=>"fastcar", "year"=>"2019"}, "commit"=>"Create Car"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30
+  [1m[36mCar Create (1.1ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "Kevinhonda"], ["model", "fastcar"], ["year", 2019], ["created_at", "2019-09-30 07:59:17.215829"], ["updated_at", "2019-09-30 07:59:17.215829"]]
+  ↳ app/controllers/cars_controller.rb:30
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30
+Redirected to http://localhost:3000/cars/1
+Completed 302 Found in 21ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/cars/1" for 127.0.0.1 at 2019-09-30 09:59:17 +0200
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 31ms (Views: 26.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2019-09-30 09:59:21 +0200
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars/new" for 127.0.0.1 at 2019-09-30 09:59:23 +0200
+Processing by CarsController#new as HTML
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (11.2ms)
+  Rendered cars/new.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 47ms (Views: 45.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2019-09-30 10:00:16 +0200
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7S/xQj40kMUXlQm8bdKMQySvYOHAulHOqUmgtdQB45p4+qZVsHOhmGoU4tei0VpMVsIdsNaTlYUajvny2qRhxw==", "car"=>{"make"=>"Kevinferrari", "model"=>"speedycar", "year"=>"2019"}, "commit"=>"Create Car"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30
+  [1m[36mCar Create (1.3ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "Kevinferrari"], ["model", "speedycar"], ["year", 2019], ["created_at", "2019-09-30 08:00:16.668658"], ["updated_at", "2019-09-30 08:00:16.668658"]]
+  ↳ app/controllers/cars_controller.rb:30
+  [1m[35m (26.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30
+Redirected to http://localhost:3000/cars/2
+Completed 302 Found in 38ms (ActiveRecord: 27.8ms)
+
+
+Started GET "/cars/2" for 127.0.0.1 at 2019-09-30 10:00:16 +0200
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2019-09-30 10:00:34 +0200
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 37ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cars/new" for 127.0.0.1 at 2019-09-30 10:00:38 +0200
+Processing by CarsController#new as HTML
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (3.2ms)
+  Rendered cars/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 66ms (Views: 64.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2019-09-30 10:01:02 +0200
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4DbgwCkGr0vt6Qr3wozf2kX0E7qv5u14sauHqi73Sol147fXp0GeFpBo4ZwNjwnVN5lu67nPKTMCbN7tIFLI1A==", "car"=>{"make"=>"KevinTesla", "model"=>"Airspeed", "year"=>"2019"}, "commit"=>"Create Car"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30
+  [1m[36mCar Create (1.0ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "KevinTesla"], ["model", "Airspeed"], ["year", 2019], ["created_at", "2019-09-30 08:01:02.817679"], ["updated_at", "2019-09-30 08:01:02.817679"]]
+  ↳ app/controllers/cars_controller.rb:30
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30
+Redirected to http://localhost:3000/cars/3
+Completed 302 Found in 21ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/cars/3" for 127.0.0.1 at 2019-09-30 10:01:02 +0200
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.2ms)
+
+
