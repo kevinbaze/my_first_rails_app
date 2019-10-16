@@ -1,1 +1,3 @@
-make changes so that you can push to remote hellolahluhaoh;oahvo;aho'iVj;oih ;opufh;ochO;UH;OAH OI H;o hoHO;H;OSh ;oFAHS;OUF//EXTRA text is happeing to git
+What happens to this file when I commit?
+Why do I need to use the terminal to commit what I am doing here?
+Does it mean I am indirectly updating this file when I save here ?
